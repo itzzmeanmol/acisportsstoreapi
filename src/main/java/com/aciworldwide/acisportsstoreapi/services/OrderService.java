@@ -4,24 +4,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import com.aciworldwide.acisportsstoreapi.model.Order;
 import com.aciworldwide.acisportsstoreapi.model.Product;
+import com.aciworldwide.acisportsstoreapi.repository.OrderRepository;
 import com.aciworldwide.acisportsstoreapi.repository.ProductRepository;
 
 @Service
-public class ProductService {
+public class OrderService {
+
 	@Autowired
-	private ProductRepository repository;
+	private OrderRepository orderRepo;
 
-	public List<Product> getProducts() {
-		return repository.findAll();
+	public List<Order> getOrders() {
+		return orderRepo.findAll();
 	}
 
-	public Product getProduct(long id) {
-		return repository.findById(id).get();
+	public Order saveOrder(Order order) {
+		return orderRepo.save(order);
 	}
-
-	
 
 }
